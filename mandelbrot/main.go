@@ -7,9 +7,7 @@ import (
 	"image/draw"
 	"image/png"
 	"math/cmplx"
-	"math/rand"
 	"os"
-	"time"
 )
 
 type point struct {
@@ -44,8 +42,6 @@ func shade(i, N int) color.RGBA {
 }
 
 func main() {
-	rand.Seed(time.Now().UTC().UnixNano())
-
 	var N, W, H int
 	var xMin, xMax, yMin, yMax float64
 
@@ -61,7 +57,6 @@ func main() {
 
 	img := image.NewRGBA(image.Rect(0, 0, W, H))
 	white := color.RGBA{255, 255, 255, 255}
-	//black := color.RGBA{0, 0, 0, 255}
 	draw.Draw(img, img.Bounds(), &image.Uniform{white}, image.ZP, draw.Src)
 
 	// Create the closure for the conversion between pixel coord and complex number
